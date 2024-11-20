@@ -2,38 +2,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/josh.css'%}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    </head>
+  <meta charset="utf-8">
+  <title>EUROTHENTIC.UG - {% block title %} {% endblock title %}</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="ecommerce website we deliver in one hour" name="keywords">
+  <meta content="ecommerce" name="description">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet">
+
+  <!-- Icon Font Stylesheet -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Libraries Stylesheet -->
+
+  <!-- Bootstrap Stylesheet -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Template Stylesheet -->
+  <link rel="stylesheet" href="{% static 'css/josh.css'%}">
+</head>
+    <!-- Required Core Stylesheet -->
     <body>
+   
+      <!-- Navbar Start -->
+      <div class="container-fluid fixed-top" style="background-color:white; width:100%;">
+        <div class="container px-0">
+            <nav class="navbar navbar-light bg-white navbar-expand-xl">
+                <a href="index.html" class="navbar-brand"><h1 class="text-primary display-6">EUROTHENTIC.UG</h1></a>
+                <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars text-primary"></span>
+                </button>
+                <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
+                    <div class="navbar-nav mx-auto">
+                        <a href="/" class="nav-item nav-link active">Home</a>
+                        <a href="/contact" class="nav-item nav-link">Contact Us</a>
+                        <a href="/about" class="nav-item nav-link">About Us</a>
+                        <a href="/checkout" class="nav-item nav-link">Checkout</a>
+                        {% if request.user.is_authenticated %}
+                            <a href="/logout" class="nav-item nav-link">Log Out</a>
+                            {{ user.username }}
+                        {% else %}
+                            <a href="/login" class="nav-item nav-link">Login</a>
+                            <a href="/signup" class="nav-item nav-link">Sign Up</a>
+                        {% endif %}
+                        <form class="d-flex">
+
+                          <a href=" {% url 'cart_summary' %}"
+                            class="btn btn-outline-dark">
+                         
+                            <i class="fa-solid fa-cart-shopping me-1"></i>Cart<span class="badge bg-dark text-white ms-1 rounded-pill" id="cart_quantity">{{ cart|length }}</span>
+                        
+                        </a>
+                         </form>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
  
+
         <h1>{{ category.name }}</h1>
         
             <div class="container">
                 <div class="row">
             {% for subcategory in subcategories %}
-            <div class="col-lg-3 col-md-6 col-6 mb-5 ml-2">
-               <div class="carding">
+            <div class="col-lg-3 col-md-6 col-6 mb-5 ml-2 oli">
+               <div class="cardings">
                 <img src="{{ subcategory.image.url }}" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('{{ subcategory.image.url }}')" style="cursor: pointer;">
                </div>
-                <div class="card-body">
-                  <h5 class="card-title mt-2" id="namepr{{subcategory_id}}">{{subcategory.name}}</h5>
+                <div class="card-body titld">
+                  <h5 class="card-title mt-2">{{subcategory.name}}</h5>
                   <p class="card-text">{{subcategory.desc|slice:"0:53"}}...</p>
                   <h6 class="card-title mb-3">
-                    Price:<span id="pricepr{{subcategory_id}}">{{subcategory.price}}</span>
+                    Price:{{subcategory.price}}</span>
+                    Price:{{subcategory.id}}</span>
                   </h6>
-                  <span id="divpr{{subcategory_id}}" class="divpr">
-                    <button  data-id="pr{{subcategory_id}}" class="btn btn-danger cart btn-sm mt-0">
-                      AddToCart <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
+                  
+                  <button type="button" value="{{subcategory.id}}" class="btn btn-danger cart-button btn-sm mt-0">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Add To Cart
+                  </button>
+                  
+
                   </span>
-                 
-                  <a href="{{ subcategory.image.url }}">
-                    <button class="btn btn-dark btn-sm cart">view</button></a
-                  >
+                  <a href="https://wa.me/+256774234681" target="_blank" style="text-decoration:none;">
+                    <i class="fa-brands fa-whatsapp" style="font-size:40px; font-weight:bold; color:#25D366;"></i>
+                </a>
                 </div>
             </div>
             {% endfor %}
@@ -53,19 +111,52 @@
       </div>
     </div>
   </div>
-  
-     
+  <script>
+    $(document).on('click', '.cart-button', function (e) {
+      e.preventDefault();
+      const productId = $(this).val(); // Get the value of the clicked button
+      $.ajax({
+        type: 'POST',
+        url: '{% url "cart_add" %}',
+        data: {
+          product_id: productId, // Match the backend key
+          csrfmiddlewaretoken: '{{ csrf_token }}',
+          action: 'post'
+        },
+        success: function (json) {
+         document.getElementById('cart_quantity').textContent = json.qty
+        },
+        error: function (errmsg, err) {
+          console.error(errmsg);
+        }
+      });
+    });
+    
+  </script>
   <script>
     function openModal(imageUrl) {
       const modalImage = document.getElementById('modalImage');
       modalImage.src = imageUrl;
     }
   </script>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.2/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
   <script>
+    document.getElementById("registerButton").addEventListener("click", function() {
+       // Redirect to index.html
+       window.location.href = "{% url 'register' %}";
+    });
+ </script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <script src="{% static 'js/all.min.js'%}"></script>
+ 
+
+ <script src="{% static 'js/josh.js'%}"></script>
+
+
+
+</body>
+</html>
   
-    //find pout the card from local storage
-  
+   
    

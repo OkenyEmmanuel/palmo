@@ -3,12 +3,35 @@ body{
     background: white;
 }
 
+.btn-whatsapp {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #25D366;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-whatsapp:hover {
+    background-color: #20b358;
+}
+
+
 .carousel{
     width:100%;
     height:500px;
    
 
 }
+.ltm{
+    width:200px;
+    height:200px;
+}
+
+
 .carousel img{
     height:500px;
     object-fit: cover;
@@ -18,6 +41,7 @@ body{
 }
 .navbar{
     width:100%;
+    height:100px;
 }
 
 
@@ -125,7 +149,7 @@ body{
     font-family: 'Times New Roman', Times, serif;
     font-style: italic;  
     font-size: 100px;
-    color:#D4AF37;
+    color:#1a160c;
     
 }
 .kj{
@@ -158,9 +182,10 @@ body{
 
 .carding{
     width:270px;
-    height:400px;
+    height:500px;
     border:2px solid rgb(162, 155, 155);
     border-radius:10px;
+   
  
  
 }
@@ -184,7 +209,9 @@ body{
     transition: opacity 0.3s ease-in-out; /* Smooth transition for the opacity effect */
 }
 .titlo{
-    width:280px;
+    width:270px;
+    border-top:1px solid black;
+    border-right:none;
 }
 .titlo p{
     text-align:center;
@@ -261,7 +288,7 @@ body{
     position: absolute;
     top:260px;
     left:80px;
-    color:#D4AF37;
+    color:#1a160c;
     font-family: 'Times New Roman', Times, serif;
     font-style: italic; 
     clip-path: polygon(0 0, 100% 0, 0 0);
@@ -534,8 +561,9 @@ h2{
 .navbar{
     display:block;
     
-    height:150px;
+    height:100px;
     margin-top: 0px;
+    width:100%;
 }
 .custom-bg-black {
     background-color: black !important; /* Use !important to ensure the style is applied */
@@ -558,16 +586,54 @@ height:100px;
     width:202px;
     object-position: center center;
     padding-left: 0px;
-    height:400px;
+    height:200px;
+    margin-top:-60px;
     
 }
+.mj{
+   
+    height:360px;
+}
 .carding{
-    border-radius:20px;
+   
     width:280px;
+    height: 200px;
+    margin-top: 10px;
+    border-bottom:0px;
+}
+.cardings{
+    width:250px;
     height: 400px;
+    margin-top: 10px;
+    border:0px;
+    object-fit: cover;
+}
+.cardings img{
+    width:180px;
+    object-position: center center;
+    padding-left: 0px;
+    height:300px;
+    margin-top:-60px;
+    
+}
+.oli{
+    width:180px;
+    border:1px solid black;
+
 }
 .titlo{
+   
+    margin-top:-50px;
     color:black;
+    width:150px;
+    border-top:1px solid black;
+}
+.titld{
+    width:165px;
+    height:200px;
+    border:1px solid black;
+    border-radius:1px;
+    margin-top:-50px;
 }
 
 
@@ -575,7 +641,14 @@ height:100px;
     height:3400px;
   }
   .made{
-    display:none;
+    position:absolute;
+    top:100px;
+    left:0px;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;  
+    font-size: 200px;
+    color:#9aea24;
+    z-index:100;
   }
  
   

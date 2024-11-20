@@ -7,7 +7,7 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="ecommerce website we deliver in one hour" name="keywords">
   <meta content="ecommerce" name="description">
-
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <!-- Google Web Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,10 +29,10 @@
     <body>
    
       <!-- Navbar Start -->
-      <div class="container-fluid fixed-top">
+      <div class="container-fluid fixed-top" style="background-color:white; width:100%;">
         <div class="container px-0">
             <nav class="navbar navbar-light bg-white navbar-expand-xl">
-                <a href="index.html" class="navbar-brand"><h1 class="text-primary display-6">EUROTHENTIC.UG</h1></a>
+                <a href="index.html" class="navbar-brand"><h1 class="display-6" style="color:#9aea24;">EUROTHENTIC.UG</h1></a>
                 <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars text-primary"></span>
                 </button>
@@ -43,15 +43,21 @@
                         <a href="/about" class="nav-item nav-link">About Us</a>
                         <a href="/checkout" class="nav-item nav-link">Checkout</a>
                         {% if request.user.is_authenticated %}
-                            <a href="/auth/logout" class="nav-item nav-link">Log Out</a>
+                            <a href="/logout" class="nav-item nav-link">Log Out</a>
                             {{ user.username }}
                         {% else %}
-                            <a href="/auth/login" class="nav-item nav-link">Login</a>
-                            <a href="/auth/signup" class="nav-item nav-link">Sign Up</a>
+                            <a href="/login" class="nav-item nav-link">Login</a>
+                            <a href="/signup" class="nav-item nav-link">Sign Up</a>
                         {% endif %}
-                        <button type="button" class="nav-link scrollto bg-danger p-3 m-2 text-white" id="popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true">
-                            Cart(<span id="cart">0</span>)
-                        </button>
+                        <form class="d-flex">
+
+                          <a href=" {% url 'cart_summary' %}"
+                            class="btn btn-outline-dark">
+                         
+                            <i class="fa-solid fa-cart-shopping me-1"></i>Cart<span class="badge bg-dark text-white ms-1 rounded-pill" id="cart_quantity">{{ cart|length }}</span>
+                        
+                        </a>
+                         </form>
                     </div>
                 </div>
             </nav>
@@ -180,12 +186,12 @@
 <div class="container">
   <div class="row">
       {% for dest in dests %}
-          <div class="col-lg-3 col-xxl-6 col-md-6 col-6 mb-5 ml-2">
+          <div class="col-lg-3 col-xxl-6 col-md-6 col-6 mb-5 ml-2 mj">
               <div class="carding">
                   <a href="{% url 'category_detail' slug=dest.slug %}" style="text-decoration:none;">
                       <img src="{{ dest.image.url }}" alt="{{ dest.name }}">
                       <div class="titlo">
-                        <p class="text-center" style="color:black; font-weight:light; ">{{ dest.name }}</p>
+                        <p class="text-center" style="color:black; font-weight:light; margin-top:20px;">{{ dest.name }}</p>
                     </div>
                   </a>
                  
@@ -250,7 +256,7 @@
       <div class="rowm">
         <div class="col-2">
              <a
-        href="https://www.tiktok.com/@jonjos.ug"
+        href="https://www.tiktok.com/@"
         target="_blank"
         rel="noopener noreferrer"
     >
@@ -259,7 +265,7 @@
         </div>
 
         <div class="col-2">
-          <a href="https://www.youtube.com/channel/@jonjos.ug256" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.youtube.com/channel/" target="_blank" rel="noopener noreferrer">
           <i class="fa-brands fa-youtube" style="font-size:40px; font-weight:bold; color:#000000;" ></i>
           </a>
         </div>
@@ -267,7 +273,7 @@
           <i class="fa-brands fa-facebook" style="font-size:40px; font-weight:bold; color:#000000;"></i>
         </div>
         <div class="col-2">
-          <a href="https://www.instagram.com/jonjofashions.ug" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
           <i class="fa-brands fa-instagram" style="font-size:40px; font-weight:bold; color:#000000;"></i>
           </a>
         </div>

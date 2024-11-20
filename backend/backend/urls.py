@@ -21,6 +21,7 @@ import jonjo
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('jonjo.urls')),
+    path('cart/',include('cart.urls')),
    
 ]
 from django.conf import settings
