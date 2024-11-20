@@ -1,0 +1,28 @@
+def save_doctor_image(instance, filename):
+    upload_to = 'Images/'
+    ext = filename.split('.')[-1]
+    if instance.name:
+        filename = f'Doctors_Pictures/{instance.name}.{ext}'
+    return os.path.join(upload_to, filename)
+            
+   
+class Doctors(models.Model):
+    doctor_id = models.CharField(max_length=100, unique=True, default='doc')
+    firstname = models.CharField(max_length=100)
+    lastname = models.CharField(max_length=100)
+    image = models.ImageField(upload_to=save_doctor_image, blank=True, verbose_name='Doctor image')
+    department = models.ForeignKey(Subcategory, on_delete=models.CASCADE, related_name="doco")
+
+
+ # Assuming 'Doctors' model is defined in 'department' app
+
+class DoctorAppointment(models.Model):
+    doctor = models.ForeignKey(Doctors, on_delete=models.CASCADE, related_name='appointments')
+    patient_name = models.CharField(max_length=100)
+    appointment_date = models.DateField()
+    appointment_time = models.TimeField()
+    reason = models.TextField()
+
+    def __str__(self):
+        return f"Appointment with Dr. {self.doctor.lastname} for {self.patient_name} on {self.appointment_date} at {self.appointment_time}"
+    

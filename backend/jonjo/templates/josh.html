@@ -1,0 +1,321 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>EUROTHENTIC.UG - {% block title %} {% endblock title %}</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="ecommerce website we deliver in one hour" name="keywords">
+  <meta content="ecommerce" name="description">
+
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet">
+
+  <!-- Icon Font Stylesheet -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Libraries Stylesheet -->
+
+  <!-- Bootstrap Stylesheet -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Template Stylesheet -->
+  <link rel="stylesheet" href="{% static 'css/josh.css'%}">
+</head>
+    <!-- Required Core Stylesheet -->
+    <body>
+   
+      <!-- Navbar Start -->
+      <div class="container-fluid fixed-top">
+        <div class="container px-0">
+            <nav class="navbar navbar-light bg-white navbar-expand-xl">
+                <a href="index.html" class="navbar-brand"><h1 class="text-primary display-6">EUROTHENTIC.UG</h1></a>
+                <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars text-primary"></span>
+                </button>
+                <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
+                    <div class="navbar-nav mx-auto">
+                        <a href="/" class="nav-item nav-link active">Home</a>
+                        <a href="/contact" class="nav-item nav-link">Contact Us</a>
+                        <a href="/about" class="nav-item nav-link">About Us</a>
+                        <a href="/checkout" class="nav-item nav-link">Checkout</a>
+                        {% if request.user.is_authenticated %}
+                            <a href="/auth/logout" class="nav-item nav-link">Log Out</a>
+                            {{ user.username }}
+                        {% else %}
+                            <a href="/auth/login" class="nav-item nav-link">Login</a>
+                            <a href="/auth/signup" class="nav-item nav-link">Sign Up</a>
+                        {% endif %}
+                        <button type="button" class="nav-link scrollto bg-danger p-3 m-2 text-white" id="popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true">
+                            Cart(<span id="cart">0</span>)
+                        </button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+   <!--Carousel start-->
+
+   <div class="carousel">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+       <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+       </div>
+       <div class="carousel-inner">
+          <div class="carousel-item active">
+           
+             {% if land.0 %}
+             <img src="{{ land.0.image.url }}" class="d-block w-100" alt="Landing Image 1">
+             <div class="carousel-caption d-none d-md-block">
+              <h2 class="made">Eurothentic store</h2>
+             </div>
+             {% endif %}
+          </div>
+          <div class="carousel-item">
+          
+             {% if land.4 %}
+             <img src="{{ land.4.image.url }}" class="d-block w-100" alt="Landing Image 2">
+             <div class="carousel-caption d-none d-md-block">
+              <h2 class="made">Eurothentic store</h2>
+             </div>
+             {% endif %}
+          </div>
+          <div class="carousel-item">
+           
+             {% if land.6 %}
+             <img src="{{ land.6.image.url }}" class="d-block w-100" alt="Landing Image 3">
+             <div class="carousel-caption d-none d-md-block">
+              <h2 class="made">Eurothentic store</h2>
+             </div>
+             {% endif %}
+          </div>
+       </div>
+       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+       </button>
+       <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+       </button>
+    </div>
+ </div>
+
+   <!--Carousel end-->
+
+
+  
+<!--
+  <div class="phone">
+    
+<div class="ph" style="z-index:-1;">
+<div class="mask">
+    <img src="{% static 'images/jh.jpg'%}">
+</div>
+</div>
+<div class="ph" style="z-index:-1;">
+<div class="mask">
+    <img src="{% static 'images/j13.jpg'%}">
+  </div>
+</div>
+-->
+  
+ 
+
+
+    <!--
+      <div class="container">
+        <div class="muni">
+          <div class="muni1">
+           <img src="images/yy.png">
+           <h6>BEST AFRICAN EMERGING DESIGNEROF THE YEAR 202ASFAs AWARDS</h6>
+          </div>
+          <div class="muni2">
+            <img src="images/cc.png">
+            <h6> "20 YOUNGAFRICAN CREATIVES TO KNOW"THE AFRICA REPORT</h6>
+          </div>
+          <div class="muni3">
+            <img src="images/ji.png">
+            <h6>WK in TV3 FASHION UNITED,MAX AWARDS, RTVE,ABRYANZ NEWS...</h6>
+          </div>
+        </div>
+    </div>-->
+
+    <div class="container big">
+      <div class="rown">
+          <h3>About Us</h3>
+      </div>
+    </div>
+    <div class="emm">
+    <div class="sector" style="margin-top:140px;">
+     
+      <div class="s7">
+        {% if land %}
+        <img src="{{ land.0.image.url }}" alt="Landing Image 1">
+        {% endif %}
+      </div>
+     
+      <div class="s3">
+        <div id="sd">
+          <h1>At Eurothentic Store </h1> <br><p class="hy">we believe that self-care is an art form.Our mission is to empower you to embrace
+            your natural beauty through high quality skincare and wellness products. From luxurious lotions to state-of-the-art massage guns, we curate a collection designed to elevate your daily routine.
+           </p>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+    <div class="t1">
+      <h3>Our products</h3>
+    </div>
+    <div class="cg">
+     
+ <!-- josh.html -->
+<div class="container">
+  <div class="row">
+      {% for dest in dests %}
+          <div class="col-lg-3 col-xxl-6 col-md-6 col-6 mb-5 ml-2">
+              <div class="carding">
+                  <a href="{% url 'category_detail' slug=dest.slug %}" style="text-decoration:none;">
+                      <img src="{{ dest.image.url }}" alt="{{ dest.name }}">
+                      <div class="titlo">
+                        <p class="text-center" style="color:black; font-weight:light; ">{{ dest.name }}</p>
+                    </div>
+                  </a>
+                 
+              </div>
+          </div>
+      {% endfor %}
+  </div>
+</div>
+
+  
+  
+
+
+<div class="banner">
+  <div class="pic">
+    {% if land|length > 2 %}
+    <img src="{{ land.3.image.url }}" alt="Landing Image 2">
+    {% endif %}
+
+  </div>
+  <div id="registrationSection" class="registeration">
+    <div class="texts">
+      <h1><span class="one">Unleash Your</span><br>
+         <span class="two">Inner Beauty</span></h1>
+         <h1><span class="three">By </span></h1>
+         <span class="four"><h3>Shopping At Eurothentic</h3></span>
+         <div class="gone">
+          <span class="five">Services</span>
+         <h5>Massage Guns</h5>
+         <h5>Skincare Products</h5>
+         <h5>Massage pillows</h5>
+         <h5>Pain anad stress relievers</h5>
+         </div>
+         
+    </div>
+    <div class="button">
+      <button class="btn btn-dark"id="registerButton">Contact Us</button>
+    </div>
+   
+
+  </div>
+</div>
+
+
+
+
+
+  <div class="all">
+    <div class="container-md ter" id="contactus">
+
+      <div class="row">
+        <div class="col-12">
+           <h1 style="text-align:center;  font-family: 'Times New Roman', Times, serif; font-style: italic; ">Contact Us</h1>
+          <p style="text-align:center;">0783220175</p>
+        </div>
+      </div>
+      
+      <div class="media">
+        <h3>follow us</h3>
+      </div>
+      
+      <div class="rowm">
+        <div class="col-2">
+             <a
+        href="https://www.tiktok.com/@jonjos.ug"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+          <i class="fa-brands fa-tiktok" style="font-size:40px; font-weight:bold; color:#000000;"></i>
+        </a>
+        </div>
+
+        <div class="col-2">
+          <a href="https://www.youtube.com/channel/@jonjos.ug256" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-youtube" style="font-size:40px; font-weight:bold; color:#000000;" ></i>
+          </a>
+        </div>
+        <div class="col-2">
+          <i class="fa-brands fa-facebook" style="font-size:40px; font-weight:bold; color:#000000;"></i>
+        </div>
+        <div class="col-2">
+          <a href="https://www.instagram.com/jonjofashions.ug" target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-instagram" style="font-size:40px; font-weight:bold; color:#000000;"></i>
+          </a>
+        </div>
+       
+      </div>
+     
+    </div>
+  
+  <div class="w1">
+    <h3>Eurothentic</h3>
+  </div>
+  <div class="art">
+  
+    <div class="darc">
+      <div class="darc2">
+        {% if land|length > 2 %}
+        <img src="{{ land.2.image.url }}" alt="Landing Image 3">
+    {% endif %}
+        </div>
+      <div class="darc1">
+       <video autoplay loop muted plays-inline class="back-video">
+        <source src="{{vid.video.url}}" type="video/mp4">
+       </video>
+      </div>
+    
+    </div>
+    
+  </div>
+</div>
+
+
+
+
+ <script>
+      document.getElementById("registerButton").addEventListener("click", function() {
+         // Redirect to index.html
+         window.location.href = "{% url 'register' %}";
+      });
+   </script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
+    <script src="{% static 'js/all.min.js'%}"></script>
+   
+
+   <script src="{% static 'js/josh.js'%}"></script>
+
+
+
+</body>
+</html>
